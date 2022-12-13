@@ -41,8 +41,8 @@ public class HealthReportService {
         }
         else {
             Date d = new Date( );
-            SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");
-            healthReport.setDate(ft.format(d));
+            SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
+            healthReport.setSubDate(ft.format(d));
             healthReportManager.save(healthReport);
             return new Response<>(Response.SUCCESS, "成功", null);
         }

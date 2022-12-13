@@ -17,10 +17,10 @@ public class HealthReport {
     private Integer id;
     @Column(name = "stu_id", nullable = false)
     private Integer stuId;
-    @Column(name = "date", nullable = false)
-    private String date;
-    @Column(name = "condition", nullable = false)
-    private String condition;
-    @Column(name = "position", nullable = false)
-    private String position;
+    @Column(name = "sub_date", nullable = false)
+    private String subDate;
+    @Column(name = "health", nullable = false)
+    private String health;
+    @Column(name = "location", nullable = false)
+    private String location;
 }
