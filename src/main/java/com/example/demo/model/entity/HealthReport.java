@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,7 +18,7 @@ public class HealthReport {
     @Column(name = "stu_id", nullable = false)
     private Integer stuId;
     @Column(name = "date", nullable = false)
-    private Date date;
+    private String date;
     @Column(name = "condition", nullable = false)
     private String condition;
     @Column(name = "position", nullable = false)
