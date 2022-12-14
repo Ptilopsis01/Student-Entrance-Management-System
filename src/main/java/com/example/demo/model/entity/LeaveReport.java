@@ -24,7 +24,7 @@ public class LeaveReport {
     @Column(name = "reason", nullable = false)
     private String reason;
     @Column(name = "status", nullable = false)
-    private Integer status;//0/1/2/3:未审核/通过/未通过/已失效
+    private Integer status;//0/1/2:未审核/通过/未通过
     @Column(name = "leave_time", nullable = false)
     private Date leaveTime;
     @Column(name = "back_time", nullable = false)
