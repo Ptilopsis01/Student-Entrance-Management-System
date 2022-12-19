@@ -41,4 +41,12 @@ public class RequestController {
     public Response<LeaveReport> approveLeaveRequest(@RequestParam Integer id, Integer status, String reason){
         return requestService.editLeaveRequest(id, status, reason);
     }
+    @GetMapping("/super/enter/un/")
+    public Response<List<EnterReport>> getUnapprovedEnterRequests(){
+        return requestService.getUnapprovedEnterRequests();
+    }
+    @GetMapping("/super/leave/un/")
+    public Response<List<LeaveReport>> getUnapprovedLeaveRequests(){
+        return requestService.getUnapprovedLeaveRequests();
+    }
 }

@@ -82,4 +82,22 @@ public class RequestService {
             return new Response<>(Response.SUCCESS, "成功", leaveReport);
         }
     }
+    public Response<List<EnterReport>> getUnapprovedEnterRequests(){
+        List<EnterReport> enterReport = enterReportManager.findEnterReportByStatus(2);
+        if (enterReport == null){
+            return new Response<>(Response.FAIL, "没有未审批的申请", null);
+        }
+        else {
+            return new Response<>(Response.SUCCESS, "成功", enterReport);
+        }
+    }
+    public Response<List<LeaveReport>> getUnapprovedLeaveRequests(){
+        List<LeaveReport> leaveReport = leaveReportManager.findLeaveReportByStatus(2);
+        if (leaveReport == null){
+            return new Response<>(Response.FAIL, "没有未审批的申请", null);
+        }
+        else {
+            return new Response<>(Response.SUCCESS, "成功", leaveReport);
+        }
+    }
 }

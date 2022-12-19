@@ -9,6 +9,7 @@ import com.example.demo.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service("RequestService")
@@ -36,6 +37,8 @@ public class RequestService {
             return new Response<>(Response.FAIL, "学生不存在", null);
         }
         else {
+            Date date = new Date(System.currentTimeMillis());
+            enterReport.setSubTime(date);
             enterReportManager.save(enterReport);
             return new Response<>(Response.SUCCESS, "成功", null);
         }
@@ -54,6 +57,8 @@ public class RequestService {
             return new Response<>(Response.FAIL, "学生不存在", null);
         }
         else {
+            Date date = new Date(System.currentTimeMillis());
+            leaveReport.setSubTime(date);
             leaveReportManager.save(leaveReport);
             return new Response<>(Response.SUCCESS, "成功", null);
         }

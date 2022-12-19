@@ -29,4 +29,7 @@ public class EnterReportManager {
     public List<EnterReport> findEnterReportByDeptId(Integer id){
         return enterReportMapper.findEnterReportByDeptId(id);
     }
+    public List<EnterReport> findEnterReportByStatus(Integer status){
+        return enterReportMapper.findEnterReportByStatus(status);
+    }
 }

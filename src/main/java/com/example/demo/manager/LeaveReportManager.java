@@ -29,4 +29,7 @@ public class LeaveReportManager {
     public List<LeaveReport> findLeaveReportByDeptId(Integer id){
         return leaveReportMapper.findLeaveReportByDeptId(id);
     }
+    public List<LeaveReport> findLeaveReportByStatus(Integer status){
+        return leaveReportMapper.findLeaveReportByStatus(status);
+    }
 }
