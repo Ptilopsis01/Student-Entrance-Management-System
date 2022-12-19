@@ -17,7 +17,7 @@ public class LogManager {
     public void save(Log log){
           logMapper.save(log);
     }
-    public List<Log> getLogById(Integer id){
+    public List<Log> getLogByStuId(Integer id){
         return logMapper.findLogByStuId(id);
     }
 }

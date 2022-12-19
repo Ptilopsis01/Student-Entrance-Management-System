@@ -24,4 +24,8 @@ public class LogController {
     public Response<List<Log>> getLog(@PathVariable Integer id) {
         return logService.getLog(id);
     }
+    @GetMapping("/leave-time/{id}")
+    public Response<Long> getLeaveTime(@PathVariable Integer id){
+        return logService.getLeaveTime(id);
+    }//返回离校总时长（分钟）
 }

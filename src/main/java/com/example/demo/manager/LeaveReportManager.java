@@ -17,6 +17,9 @@ public class LeaveReportManager {
     public void save(LeaveReport leaveReport){
         leaveReportMapper.save(leaveReport);
     }
+    public LeaveReport findLeaveReportById(Integer id){
+        return leaveReportMapper.findLeaveReportById(id);
+    }
     public List<LeaveReport> findLeaveReportByStuId(Integer id){
         return leaveReportMapper.findLeaveReportByStuId(id);
     }

@@ -58,4 +58,28 @@ public class RequestService {
             return new Response<>(Response.SUCCESS, "成功", result);
         }
     }
+    public Response<EnterReport> editEnterRequest(Integer id, Integer status, String reason){
+        EnterReport enterReport = enterReportManager.findEnterReportById(id);
+        if (enterReport == null){
+            return new Response<>(Response.FAIL, "申请不存在", null);
+        }
+        else {
+            enterReport.setStatus(status);
+            enterReport.setReason(reason);
+            enterReportManager.save(enterReport);
+            return new Response<>(Response.SUCCESS, "成功", enterReport);
+        }
+    }
+    public Response<LeaveReport> editLeaveRequest(Integer id, Integer status, String reason){
+        LeaveReport leaveReport = leaveReportManager.findLeaveReportById(id);
+        if (leaveReport == null){
+            return new Response<>(Response.FAIL, "申请不存在", null);
+        }
+        else {
+            leaveReport.setStatus(status);
+            leaveReport.setReason(reason);
+            leaveReportManager.save(leaveReport);
+            return new Response<>(Response.SUCCESS, "成功", leaveReport);
+        }
+    }
 }

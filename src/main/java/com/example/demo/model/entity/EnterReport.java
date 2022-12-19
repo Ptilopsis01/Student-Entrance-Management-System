@@ -28,7 +28,7 @@ public class EnterReport {
     @Column(name = "reason", nullable = false)
     private String reason;
     @Column(name = "status", nullable = false)
-    private Integer status;//0/1/2:未审核/通过/未通过
+    private Integer status;//0/1/2:未通过/通过/未审核
     @Column(name = "region", nullable = false)
     private String region;
     @Column(name = "ref_reason")

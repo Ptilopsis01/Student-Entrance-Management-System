@@ -5,10 +5,7 @@ import com.example.demo.model.entity.LeaveReport;
 import com.example.demo.service.admin.RequestService;
 import com.example.demo.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,5 +32,13 @@ public class RequestController {
     @GetMapping("/leave/dept/{id}")
     public Response<List<LeaveReport>> getLeaveRequestsByDeptId(@PathVariable Integer id){
         return requestService.getLeaveRequestsByDeptId(id);
+    }
+    @PostMapping("/enter/approve/")
+    public Response<EnterReport> approveEnterRequest(@RequestParam Integer id, Integer status, String reason){
+        return requestService.editEnterRequest(id, status, reason);
+    }
+    @PostMapping("/leave/approve/")
+    public Response<LeaveReport> approveLeaveRequest(@RequestParam Integer id, Integer status, String reason){
+        return requestService.editLeaveRequest(id, status, reason);
     }
 }

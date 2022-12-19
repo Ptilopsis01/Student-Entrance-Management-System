@@ -11,4 +11,5 @@ public interface LeaveReportMapper extends JpaRepository<LeaveReport, Integer> {
     List<LeaveReport> findLeaveReportByStuId(Integer id);
     List<LeaveReport> findLeaveReportByClassId(Integer id);
     List<LeaveReport> findLeaveReportByDeptId(Integer id);
+    LeaveReport findLeaveReportById(Integer id);
 }
