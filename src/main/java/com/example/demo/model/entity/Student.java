@@ -35,4 +35,6 @@ public class Student {
     private Integer auth;//0/1:无权限/有权限
     @Column(name = "class_id", nullable = false)
     private Integer classId;
+    @Column(name = "dept_id", nullable = false)
+    private Integer deptId;
 }

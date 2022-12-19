@@ -19,6 +19,10 @@ public class Log {
     private Integer id;
     @Column(name = "stu_id", nullable = false)
     private Integer stuId;
+    @Column(name = "class_id", nullable = false)
+    private Integer classId;
+    @Column(name = "dept_id", nullable = false)
+    private Integer deptId;
     @Column(name = "camp_id", nullable = false)
     private Integer campId;
     @Column(name = "time", nullable = false)

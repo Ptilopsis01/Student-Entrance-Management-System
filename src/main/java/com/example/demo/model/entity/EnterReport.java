@@ -19,6 +19,10 @@ public class EnterReport {
     private Integer id;
     @Column(name = "stu_id", nullable = false)
     private Integer stuId;
+    @Column(name = "class_id", nullable = false)
+    private Integer classId;
+    @Column(name = "dept_id", nullable = false)
+    private Integer deptId;
     @Column(name = "sub_time", nullable = false)
     private Date subTime;
     @Column(name = "reason", nullable = false)

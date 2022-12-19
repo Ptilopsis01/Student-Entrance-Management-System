@@ -17,6 +17,10 @@ public class HealthReport {
     private Integer id;
     @Column(name = "stu_id", nullable = false)
     private Integer stuId;
+    @Column(name = "class_id", nullable = false)
+    private Integer classId;
+    @Column(name = "dept_id", nullable = false)
+    private Integer deptId;
     @Column(name = "sub_date", nullable = false)
     private String subDate;
     @Column(name = "health", nullable = false)
