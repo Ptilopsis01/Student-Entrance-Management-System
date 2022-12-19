@@ -20,4 +20,10 @@ public class LeaveReportManager {
     public List<LeaveReport> findLeaveReportByStuId(Integer id){
         return leaveReportMapper.findLeaveReportByStuId(id);
     }
+    public List<LeaveReport> findLeaveReportByClassId(Integer id){
+        return leaveReportMapper.findLeaveReportByClassId(id);
+    }
+    public List<LeaveReport> findLeaveReportByDeptId(Integer id){
+        return leaveReportMapper.findLeaveReportByDeptId(id);
+    }
 }

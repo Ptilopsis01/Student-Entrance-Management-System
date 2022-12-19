@@ -20,4 +20,10 @@ public class EnterReportManager {
     public List<EnterReport> findEnterReportByStuId(Integer id){
         return enterReportMapper.findEnterReportByStuId(id);
     }
+    public List<EnterReport> findEnterReportByClassId(Integer id){
+        return enterReportMapper.findEnterReportByClassId(id);
+    }
+    public List<EnterReport> findEnterReportByDeptId(Integer id){
+        return enterReportMapper.findEnterReportByDeptId(id);
+    }
 }

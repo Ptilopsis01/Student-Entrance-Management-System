@@ -31,4 +31,6 @@ public class EnterReport {
     private Integer status;//0/1/2:未审核/通过/未通过
     @Column(name = "region", nullable = false)
     private String region;
+    @Column(name = "ref_reason")
+    private String refReason;
 }

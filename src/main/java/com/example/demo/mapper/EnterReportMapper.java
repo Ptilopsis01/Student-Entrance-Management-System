@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface EnterReportMapper extends JpaRepository<EnterReport, Integer> {
     List<EnterReport> findEnterReportByStuId(Integer id);
+    List<EnterReport> findEnterReportByClassId(Integer id);
+    List<EnterReport> findEnterReportByDeptId(Integer id);
 }

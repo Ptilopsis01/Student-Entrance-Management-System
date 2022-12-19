@@ -33,4 +33,6 @@ public class LeaveReport {
     private Date leaveTime;
     @Column(name = "back_time", nullable = false)
     private Date backTime;
+    @Column(name = "ref_reason")
+    private String refReason;
 }
