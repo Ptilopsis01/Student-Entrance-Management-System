@@ -49,4 +49,16 @@ public class RequestController {
     public Response<List<LeaveReport>> getUnapprovedLeaveRequests(){
         return requestService.getUnapprovedLeaveRequests();
     }
+    @GetMapping("/enter/count/all/")
+    public Response<List<Object>> countAllEnterRequest(){
+        return requestService.countAllEnterRequests();
+    }
+    @GetMapping("/enter/count/class/{id}")
+    public Response<List<Object>> countEnterRequestByClassId(@PathVariable Integer id){
+        return requestService.countEnterRequestsByClassId(id);
+    }
+    @GetMapping("/enter/count/dept/{id}")
+    public Response<List<Object>> countEnterRequestByDeptId(@PathVariable Integer id){
+        return requestService.countEnterRequestsByDeptId(id);
+    }
 }

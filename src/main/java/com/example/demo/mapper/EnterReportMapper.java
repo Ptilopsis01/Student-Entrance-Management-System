@@ -13,4 +13,5 @@ public interface EnterReportMapper extends JpaRepository<EnterReport, Integer> {
     List<EnterReport> findEnterReportByDeptId(Integer id);
     EnterReport findEnterReportById(Integer id);
     List<EnterReport> findEnterReportByStatus(Integer status);
+    Integer countByStuId(Integer id);
 }
