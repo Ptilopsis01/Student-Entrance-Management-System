@@ -74,6 +74,7 @@ public class RequestService {
                 int stuId = enterReport.getStuId();
                 Student student = studentManager.getStudentById(stuId);
                 student.setAuth(1);
+                student.setLeaveRequest(0);
                 studentManager.update(student);
                 enterReport.setStatus(status);
                 enterReport.setReason(reason);
@@ -101,6 +102,7 @@ public class RequestService {
                 int stuId = leaveReport.getStuId();
                 Student student = studentManager.getStudentById(stuId);
                 student.setAuth(0);
+                student.setLeaveRequest(1);
                 studentManager.update(student);
                 leaveReport.setStatus(status);
                 leaveReport.setReason(reason);

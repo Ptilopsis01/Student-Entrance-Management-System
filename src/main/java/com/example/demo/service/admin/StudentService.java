@@ -47,7 +47,7 @@ public class StudentService {
             return 0L;
         }
         else {
-            Long time = date.getTime() - log.get(log.size() - 1).getTime().getTime();
+            long time = date.getTime() - log.get(log.size() - 1).getTime().getTime();
             return time / (1000 * 60);
         }
     }
@@ -68,6 +68,16 @@ public class StudentService {
             leftStudent.className = classManager.getClassById(stu.getClassId()).getName();
             leftStudent.leaveTime = getStudentLeaveTime(stu.getId());
             result.add(leftStudent);
+        }
+        return new Response<>(Response.SUCCESS, "成功", result);
+    }
+    public Response<List<Student>> getLeftStudentNoRequest(){
+        List<Student> student = studentManager.getStudentByStatus(1);
+        List<Student> result = new ArrayList<>();
+        for (Student stu : student){
+            if (getStudentLeaveTime(stu.getId()) > 24*60 && stu.getLeaveRequest() == 0){
+                result.add(stu);
+            }
         }
         return new Response<>(Response.SUCCESS, "成功", result);
     }

@@ -33,6 +33,8 @@ public class Student {
     private Integer status;//0/1:校内/校外
     @Column(name = "auth", nullable = false)
     private Integer auth;//0/1:无权限/有权限
+    @Column(name = "leave_request", nullable = false)
+    private Integer leaveRequest;//0/1:未生效/已生效
     @Column(name = "class_id", nullable = false)
     private Integer classId;
     @Column(name = "dept_id", nullable = false)

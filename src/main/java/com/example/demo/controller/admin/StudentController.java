@@ -1,5 +1,6 @@
 package com.example.demo.controller.admin;
 
+import com.example.demo.model.entity.Student;
 import com.example.demo.service.admin.StudentService;
 import com.example.demo.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,9 @@ public class StudentController {
     @GetMapping("/leave/list/")
     public Response<List<Object>> getLeftStudent(){
         return studentService.getLeftStudent();
+    }
+    @GetMapping("/leave/no-request/")
+    public Response<List<Student>> getLeftStudentNoRequest(){
+        return studentService.getLeftStudentNoRequest();
     }
 }
