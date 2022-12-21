@@ -1,8 +1,7 @@
 <template>
   <div id="bg">
     <div class="welcome">
-      <h1>{{ msg }}</h1>
-      <h4>{{ caption }}</h4>
+      <h1 class="text">{{ msg }}</h1>
       <a href="/student"><button class="button">学生</button></a>
       <a href="/admin"><button class="button">管理员</button></a>
       <a href="/super"><button class="button">超级用户</button></a>
@@ -16,7 +15,6 @@ export default {
   data () {
     return {
       msg: 'Welcome to the Student Entrance Management System',
-      caption: new Date()
     }
   }
 }
@@ -25,18 +23,22 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #bg {
-  background:url("~@/assets/BG02.png");
+  background:url("~@/assets/bg005all.jpg");
   width:100%;
   height:100%;
-  position:fixed;
+  background-size: cover;
+  position: fixed;
 }
 .welcome {
   position: absolute;
   transform: translate(-50%,-50%);
   top: 50%;
   left: 50%;
-  color: ivory;
+  color: #001006;
   font-family: 'Futura', sans-serif;
+}
+.text {
+  text-shadow: ghostwhite 0 0 10px;
 }
 
 a{
