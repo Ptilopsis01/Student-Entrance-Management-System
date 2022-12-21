@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController("AdminRequestController")
-@RequestMapping("/request")
+@RequestMapping("/admin/request")
 public class RequestController {
     private final RequestService requestService;
     @Autowired
