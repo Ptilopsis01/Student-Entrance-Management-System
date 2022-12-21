@@ -12,4 +12,5 @@ public interface StudentMapper extends JpaRepository<Student, Integer> {
     List<Student> findStudentsByClassId(Integer id);
     List<Student> findStudentsByDeptId(Integer id);
     List<Student> findAll();
+    List<Student> findStudentsByStatus(Integer status);
 }

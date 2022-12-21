@@ -29,4 +29,7 @@ public class StudentManager {
     public List<Student> getStudentByDeptId(Integer deptId){
         return studentMapper.findStudentsByDeptId(deptId);
     }
+    public List<Student> getStudentByStatus(Integer status){
+        return studentMapper.findStudentsByStatus(status);
+    }
 }
