@@ -81,4 +81,14 @@ public class StudentService {
         }
         return new Response<>(Response.SUCCESS, "成功", result);
     }
+    public Response<List<Student>> getNotLeftStudentInRequest(){
+        List<Student> student = studentManager.getStudentByStatus(0);
+        List<Student> result = new ArrayList<>();
+        for (Student stu : student){
+            if (stu.getLeaveRequest() == 1){
+                result.add(stu);
+            }
+        }
+        return new Response<>(Response.SUCCESS, "成功", result);
+    }
 }

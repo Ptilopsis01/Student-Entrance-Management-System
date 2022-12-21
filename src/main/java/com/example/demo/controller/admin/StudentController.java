@@ -26,4 +26,8 @@ public class StudentController {
     public Response<List<Student>> getLeftStudentNoRequest(){
         return studentService.getLeftStudentNoRequest();
     }
+    @GetMapping("/not-leave/in-request/")
+    public Response<List<Student>> getNotLeftStudentInRequest(){
+        return studentService.getNotLeftStudentInRequest();
+    }
 }

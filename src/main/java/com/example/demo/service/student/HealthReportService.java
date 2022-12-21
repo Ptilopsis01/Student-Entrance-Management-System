@@ -7,8 +7,7 @@ import com.example.demo.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @Service("HealthReportService")
@@ -40,11 +39,16 @@ public class HealthReportService {
             return new Response<>(Response.FAIL, "学生不存在", null);
         }
         else {
-            Date d = new Date( );
-            SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
-            healthReport.setSubDate(ft.format(d));
-            healthReportManager.save(healthReport);
-            return new Response<>(Response.SUCCESS, "成功", null);
+            Date date = new Date(System.currentTimeMillis());
+            List<HealthReport> previousReport = healthReportManager.findHealthReportByStuId(healthReport.getStuId());
+            if (previousReport.get(previousReport.size()-1).getSubDate().getTime()/1000/3600/24 == date.getTime()/1000/3600/24) {
+                return new Response<>(Response.FAIL, "今日已填报", null);
+            }
+            else {
+                healthReport.setSubDate(date);
+                healthReportManager.save(healthReport);
+                return new Response<>(Response.SUCCESS, "成功", null);
+            }
         }
     }
 }
