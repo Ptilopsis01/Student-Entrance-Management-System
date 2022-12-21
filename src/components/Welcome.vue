@@ -3,8 +3,9 @@
     <div class="welcome">
       <h1>{{ msg }}</h1>
       <h4>{{ caption }}</h4>
-      <a href="/login"><button class="button">LOGIN</button></a>
-      <a href="/register"><button class="button">REGISTER</button></a>
+      <a href="/student"><button class="button">学生</button></a>
+      <a href="/admin"><button class="button">管理员</button></a>
+      <a href="/super"><button class="button">超级用户</button></a>
     </div>
   </div>
 </template>
