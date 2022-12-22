@@ -8,8 +8,9 @@ import com.example.demo.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Objects;
 
 @Service("LogService")
 public class LogService {
@@ -26,12 +27,17 @@ public class LogService {
         }
         else {
             Student stu = studentManager.getStudentById(log.getStuId());
-            stu.setStatus(log.getType());
-            studentManager.update(stu);
-            Date date = new Date(System.currentTimeMillis());
-            log.setTime(date);
-            logManager.save(log);
-            return new Response<>(Response.SUCCESS, "成功", null);
+            if (Objects.equals(stu.getStatus(), log.getType())) {
+                return new Response<>(Response.FAIL, "学生未出校/进校", null);
+            }
+            else {
+                stu.setStatus(log.getType());
+                studentManager.update(stu);
+                Timestamp date = new Timestamp(System.currentTimeMillis());
+                log.setTime(date);
+                logManager.save(log);
+                return new Response<>(Response.SUCCESS, "成功", null);
+            }
         }
     }
     public Response<List<Log>> getLog(Integer studentId) {

@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
+
+import java.sql.Timestamp;
 
 @Data
 @NoArgsConstructor
@@ -24,7 +25,7 @@ public class EnterReport {
     @Column(name = "dept_id", nullable = false)
     private Integer deptId;
     @Column(name = "sub_time", nullable = false)
-    private Date subTime;
+    private Timestamp subTime;
     @Column(name = "reason", nullable = false)
     private String reason;
     @Column(name = "status", nullable = false)

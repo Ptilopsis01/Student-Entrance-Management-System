@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 @Data
 @NoArgsConstructor
@@ -24,7 +24,7 @@ public class HealthReport {
     @Column(name = "dept_id", nullable = false)
     private Integer deptId;
     @Column(name = "sub_date", nullable = false)
-    private Date subDate;
+    private Timestamp subDate;
     @Column(name = "health", nullable = false)
     private String health;
     @Column(name = "location", nullable = false)

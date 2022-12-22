@@ -7,7 +7,8 @@ import com.example.demo.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Service("HealthReportService")
@@ -39,9 +40,10 @@ public class HealthReportService {
             return new Response<>(Response.FAIL, "学生不存在", null);
         }
         else {
-            Date date = new Date(System.currentTimeMillis());
+            Timestamp date = new Timestamp(System.currentTimeMillis());
             List<HealthReport> previousReport = healthReportManager.findHealthReportByStuId(healthReport.getStuId());
-            if (previousReport.get(previousReport.size()-1).getSubDate().getTime()/1000/3600/24 == date.getTime()/1000/3600/24) {
+            SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+            if (fmt.format(previousReport.get(previousReport.size() - 1).getSubDate()).equals(fmt.format(date))) {
                 return new Response<>(Response.FAIL, "今日已填报", null);
             }
             else {

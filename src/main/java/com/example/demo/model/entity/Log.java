@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 @Data
 @NoArgsConstructor
@@ -26,7 +26,7 @@ public class Log {
     @Column(name = "camp_id", nullable = false)
     private Integer campId;
     @Column(name = "time", nullable = false)
-    private Date time;
+    private Timestamp time;
     @Column(name = "type", nullable = false)
     private Integer type;//0/1:进入/离开
 }
