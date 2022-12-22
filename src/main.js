@@ -69,28 +69,6 @@ axios.defaults.baseURL = '/api/'
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
-
-router.beforeEach((to, from, next) => {
-    let role = 'guest'
-    if (window.sessionStorage.user !== undefined) {
-      console.log(typeof(window.sessionStorage.user)) // string
-      let jsonObj = JSON.parse(window.sessionStorage.user);
-      // console.log(typeof(jsonObj)) // obj
-      console.log(jsonObj)
-      role = jsonObj.user.role
-    }
-    console.log("role is " + role)
-    if(to.meta.roles.includes(role)){
-      next()
-    } else {
-      next({
-        path: 'login',
-        query: {redirect: to.fullPath}
-      })
-    }
-  }
-)
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

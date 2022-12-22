@@ -1,17 +1,23 @@
 <template>
   <div id="bg">
-    <div class="welcome">
+    <div>
       <h1 class="text">{{ msg }}</h1>
-      <a href="/student"><button class="button">学生</button></a>
-      <a href="/admin"><button class="button">管理员</button></a>
-      <a href="/super"><button class="button">超级用户</button></a>
+      <el-row style="position: absolute; top: 50%; left: 25%; width: 50%">
+        <el-col :span="8"><student-login></student-login></el-col>
+        <el-col :span="8"><admin-login></admin-login></el-col>
+        <el-col :span="8"><super-user-login></super-user-login></el-col>
+      </el-row>
     </div>
   </div>
 </template>
 
 <script>
+import AdminLogin from "./admin/AdminLogin.vue";
+import StudentLogin from "./student/StudentLogin.vue";
+import SuperUserLogin from "./superuser/SuperUserLogin.vue";
 export default {
   name: 'Welcome',
+  components: {SuperUserLogin, StudentLogin, AdminLogin},
   data () {
     return {
       msg: 'Welcome to the Student Entrance Management System',
@@ -29,68 +35,13 @@ export default {
   background-size: cover;
   position: fixed;
 }
-.welcome {
+.text {
+  text-shadow: ghostwhite 0 0 10px;
   position: absolute;
   transform: translate(-50%,-50%);
-  top: 50%;
+  top: 40%;
   left: 50%;
   color: #001006;
   font-family: 'Futura', sans-serif;
 }
-.text {
-  text-shadow: ghostwhite 0 0 10px;
-}
-
-a{
-  font-family: 'Futura', sans-serif;
-  color: #f9ffff;
-  text-decoration: none;
-}
-
-.button {
-  margin: 20px;
-  border: none;
-  width: 130px;
-  height: 40px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-    7px 7px 20px 0px rgba(0,0,0,.1),
-    4px 4px 5px 0px rgba(0,0,0,.1);
-  outline: none;
-  background-color: ghostwhite;
-  color: black;
-  font-family: 'Futura', sans-serif;
-  font-weight: bolder;
-  font-size: 20px;
-}
-
-.button:after {
-  border-radius: 5px;
-  position: absolute;
-  content: "";
-  width: 0;
-  height: 100%;
-  top: 0;
-  left: 0;
-  direction: ltr;
-  z-index: -1;
-  box-shadow:
-    7px 7px 20px 0px #fff9;
-  transition: all 0.3s ease;
-}
-
-.button:hover:after {
-  left: auto;
-  right: 0;
-  width: 100%;
-}
-
-.button:active {
-  top: 2px;
-}
-
 </style>
