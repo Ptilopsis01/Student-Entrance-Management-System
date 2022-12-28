@@ -20,4 +20,8 @@ public class InfoService {
         }
         return new Response<>(Response.SUCCESS, "成功", student);
     }
+    public Response<Student> editInfo(Student student) {
+        studentManager.update(student);
+        return new Response<>(Response.SUCCESS, "成功", student);
+    }
 }
