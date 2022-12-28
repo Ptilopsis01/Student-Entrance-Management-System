@@ -15,4 +15,7 @@ public class DepartmentManager {
     public Department getDepartmentById(Integer id){
         return departmentMapper.findDepartmentById(id);
     }
+    public Department getDepartmentByAdminId(Integer id){
+        return departmentMapper.findDepartmentByAdminId(id);
+    }
 }

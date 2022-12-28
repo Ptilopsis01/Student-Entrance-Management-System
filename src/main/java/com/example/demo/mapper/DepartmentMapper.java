@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DepartmentMapper extends JpaRepository<Department, Integer> {
     Department findDepartmentById(int id);
+    Department findDepartmentByAdminId(int id);
 }
