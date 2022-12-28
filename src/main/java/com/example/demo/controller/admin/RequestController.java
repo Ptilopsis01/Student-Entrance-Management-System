@@ -41,13 +41,13 @@ public class RequestController {
     public Response<LeaveReport> approveLeaveRequest(@RequestParam Integer id, Integer status, String reason){
         return requestService.editLeaveRequest(id, status, reason);
     }
-    @GetMapping("/enter/un/")
-    public Response<List<EnterReport>> getUnapprovedEnterRequests(){
-        return requestService.getUnapprovedEnterRequests();
+    @GetMapping("/enter/un/{days}")
+    public Response<List<EnterReport>> getUnapprovedEnterRequests(@PathVariable Integer days){
+        return requestService.getUnapprovedEnterRequests(days);
     }
-    @GetMapping("/leave/un/")
-    public Response<List<LeaveReport>> getUnapprovedLeaveRequests(){
-        return requestService.getUnapprovedLeaveRequests();
+    @GetMapping("/leave/un/{days}")
+    public Response<List<LeaveReport>> getUnapprovedLeaveRequests(@PathVariable Integer days){
+        return requestService.getUnapprovedLeaveRequests(days);
     }
     @GetMapping("/enter/count/all/")
     public Response<List<Object>> countAllEnterRequest(){

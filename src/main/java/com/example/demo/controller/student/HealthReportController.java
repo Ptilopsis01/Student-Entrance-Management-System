@@ -16,11 +16,11 @@ public class HealthReportController {
     HealthReportController(HealthReportService healthReportService){
         this.healthReportService = healthReportService;
     }
-    @GetMapping("/")
-    public Response<List<HealthReport>> getHealthReport(Integer studentId, Integer days){
-        return healthReportService.getHealthReport(studentId, days);
-    }
     @PostMapping("/")
+    public Response<List<HealthReport>> getHealthReport(Integer stuId, Integer days){
+        return healthReportService.getHealthReport(stuId, days);
+    }
+    @PostMapping("/add/")
     public Response<HealthReport> addHealthReport(@RequestBody HealthReport healthReport){
         return healthReportService.addHealthReport(healthReport);
     }

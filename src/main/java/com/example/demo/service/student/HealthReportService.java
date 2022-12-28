@@ -26,11 +26,14 @@ public class HealthReportService {
         }
         else {
             List<HealthReport> result = healthReportManager.findHealthReportByStuId(studentId);
-            if (days != null && days > 0 && days <= result.size()) {
-                result.subList(days-1, result.size());
+            if (days > 0 && days < result.size()) {
+                result = result.subList(result.size() - days, result.size());
+            }
+            else if (days >= result.size()) {
+                result = result.subList(0, result.size());
             }
             else {
-                return new Response<>(Response.FAIL, "超出范围", null);
+                return new Response<>(Response.FAIL, "days参数错误", null);
             }
             return new Response<>(Response.SUCCESS, "成功", result);
         }

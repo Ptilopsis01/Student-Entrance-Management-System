@@ -8,6 +8,8 @@ import com.example.demo.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("AdminRequestService")
@@ -67,7 +69,7 @@ public class RequestService {
             return new Response<>(Response.FAIL, "申请不存在", null);
         }
         else {
-            if (status == 0 && reason == null){
+            if (status == 0 && (reason == null || reason.equals(""))){
                 return new Response<>(Response.FAIL, "请填写拒绝理由", null);
             }
             else if (status == 1){
@@ -77,13 +79,13 @@ public class RequestService {
                 student.setLeaveRequest(0);
                 studentManager.update(student);
                 enterReport.setStatus(status);
-                enterReport.setReason(reason);
+                enterReport.setRefReason(reason);
                 enterReportManager.save(enterReport);
                 return new Response<>(Response.SUCCESS, "成功", enterReport);
             }
             else {
                 enterReport.setStatus(status);
-                enterReport.setReason(reason);
+                enterReport.setRefReason(reason);
                 enterReportManager.save(enterReport);
                 return new Response<>(Response.SUCCESS, "成功", enterReport);
             }
@@ -95,7 +97,7 @@ public class RequestService {
             return new Response<>(Response.FAIL, "申请不存在", null);
         }
         else {
-            if (status == 0 && reason == null){
+            if (status == 0 && (reason == null || reason.equals(""))){
                 return new Response<>(Response.FAIL, "请填写拒绝理由", null);
             }
             else if (status == 1){
@@ -105,33 +107,53 @@ public class RequestService {
                 student.setLeaveRequest(1);
                 studentManager.update(student);
                 leaveReport.setStatus(status);
-                leaveReport.setReason(reason);
+                leaveReport.setRefReason(reason);
                 leaveReportManager.save(leaveReport);
                 return new Response<>(Response.SUCCESS, "成功", leaveReport);
             }
             else {
                 leaveReport.setStatus(status);
-                leaveReport.setReason(reason);
+                leaveReport.setRefReason(reason);
                 leaveReportManager.save(leaveReport);
                 return new Response<>(Response.SUCCESS, "成功", leaveReport);
             }
         }
     }
-    public Response<List<EnterReport>> getUnapprovedEnterRequests(){
+    public Response<List<EnterReport>> getUnapprovedEnterRequests(Integer days){
         List<EnterReport> enterReport = enterReportManager.findEnterReportByStatus(2);
         if (enterReport == null){
             return new Response<>(Response.FAIL, "没有未审批的申请", null);
         }
-        else {
+        else if (days == 0){
             return new Response<>(Response.SUCCESS, "成功", enterReport);
         }
+        else {
+            List<EnterReport> result = new ArrayList<>();
+            for (EnterReport e : enterReport){
+                Timestamp date = new Timestamp(System.currentTimeMillis());
+                if (date.getTime() - e.getSubTime().getTime() > days * 24 * 60 * 60 * 1000){
+                    result.add(e);
+                }
+            }
+            return new Response<>(Response.SUCCESS, "成功", result);
+        }
     }
-    public Response<List<LeaveReport>> getUnapprovedLeaveRequests(){
+    public Response<List<LeaveReport>> getUnapprovedLeaveRequests(Integer days){
         List<LeaveReport> leaveReport = leaveReportManager.findLeaveReportByStatus(2);
         if (leaveReport == null){
             return new Response<>(Response.FAIL, "没有未审批的申请", null);
         }
+        else if (days == 0){
+            return new Response<>(Response.SUCCESS, "成功", leaveReport);
+        }
         else {
+            List<LeaveReport> result = new ArrayList<>();
+            for (LeaveReport e : leaveReport){
+                Timestamp date = new Timestamp(System.currentTimeMillis());
+                if (date.getTime() - e.getSubTime().getTime() > days * 24 * 60 * 60 * 1000){
+                    result.add(e);
+                }
+            }
             return new Response<>(Response.SUCCESS, "成功", leaveReport);
         }
     }
