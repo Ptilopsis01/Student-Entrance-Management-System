@@ -52,7 +52,7 @@ export default {
           this.form.classId = jsonObj.user.classId
           this.form.deptId = jsonObj.user.deptId
           this.$axios
-            .post('/student/health-report/', this.form)
+            .post('/student/health-report/add/', this.form)
             .then(res => {
               if (res.data.code === 0) {
                 this.$message({

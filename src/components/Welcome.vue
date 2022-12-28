@@ -1,13 +1,11 @@
 <template>
   <div id="bg">
-    <div>
-      <h1 class="text">{{ msg }}</h1>
-      <el-row style="position: absolute; top: 50%; left: 25%; width: 50%">
-        <el-col :span="8"><student-login></student-login></el-col>
-        <el-col :span="8"><admin-login></admin-login></el-col>
-        <el-col :span="8"><super-user-login></super-user-login></el-col>
-      </el-row>
-    </div>
+    <h1 class="text">{{ msg }}</h1>
+    <el-row style="position: absolute; top: 50%; left: 25%; width: 50%">
+      <el-col :span="8"><student-login></student-login></el-col>
+      <el-col :span="8"><admin-login></admin-login></el-col>
+      <el-col :span="8"><super-user-login></super-user-login></el-col>
+    </el-row>
   </div>
 </template>
 

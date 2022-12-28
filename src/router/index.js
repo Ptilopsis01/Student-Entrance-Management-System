@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Welcome from '../components/Welcome'
 import StudentDash from "../components/StudentDash.vue";
 import ClassAdminDash from "../components/ClassAdminDash.vue";
+import DeptAdminDash from "../components/DeptAdminDash.vue";
 import SuperUserDash from "../components/SuperUserDash.vue";
 
 Vue.use(VueRouter)
@@ -24,6 +25,11 @@ export default new VueRouter({
       path: '/admin/class',
       name: 'ClassAdminDash',
       component: ClassAdminDash,
+    },
+    {
+      path: '/admin/dept',
+      name: 'DeptAdminDash',
+      component: DeptAdminDash,
     },
     {
       path: '/superuser',
