@@ -11,6 +11,9 @@
       <el-col :span="8"><student-enter-report></student-enter-report></el-col>
       <el-col :span="8"><student-leave-report></student-leave-report></el-col>
     </el-row>
+    <el-row style="position: relative; top: 150px;">
+      <el-col :span="24"><student-info></student-info></el-col>
+    </el-row>
   </div>
 </template>
 
@@ -21,9 +24,10 @@ import StudentLeave from "./student/StudentLeave.vue";
 import StudentDailyReport from "./student/StudentDailyReport.vue";
 import StudentEnterReport from "./student/StudentEnterReport.vue";
 import StudentLeaveReport from "./student/StudentLeaveReport.vue";
+import StudentInfo from "./student/StudentInfo.vue";
 export default {
   name: "StudentDash",
-  components: {StudentLeaveReport, StudentEnterReport, StudentDailyReport, StudentLeave, StudentEnter},
+  components: {StudentInfo, StudentLeaveReport, StudentEnterReport, StudentDailyReport, StudentLeave, StudentEnter},
   data() {
     return {
       auth: 0,
