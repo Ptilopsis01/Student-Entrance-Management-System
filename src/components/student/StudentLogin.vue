@@ -52,6 +52,7 @@ export default {
                     name: resp.data.data.username,
                     classId: resp.data.data.classId,
                     deptId: resp.data.data.deptId,
+                    role: 'student',
                   }
                 })
                 this.$message({

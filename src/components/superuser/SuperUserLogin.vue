@@ -13,8 +13,13 @@ export default {
   },
   methods: {
     login() {
+      this.$store.commit('login', {
+        user: {
+          role: 'superuser',
+        },
+      })
       this.$router.push('/superuser')
-    }
+      }
   }
 }
 </script>

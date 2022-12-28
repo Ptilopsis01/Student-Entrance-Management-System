@@ -52,13 +52,18 @@ export default {
                     name: resp.data.data.username,
                     classId: resp.data.data.classId,
                     deptId: resp.data.data.deptId,
+                    role: resp.data.data.type,
                   }
                 })
                 this.$message({
                   message: resp.data.msg,
                   type: 'success'
                 })
-                this.$router.push('/admin')
+                if (resp.data.data.type === "class") {
+                  this.$router.push({path: '/admin/class'})
+                } else if (resp.data.data.type === "department") {
+                  this.$router.push({path: '/admin/dept'})
+                }
               } else {
                 this.$message({
                   message: resp.data.msg,
