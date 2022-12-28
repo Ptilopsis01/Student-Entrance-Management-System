@@ -17,8 +17,8 @@ public class AdminLoginService {
     private final DepartmentManager departmentManager;
     private static class Admin{
         public Integer id;
-        public Integer class_id;
-        public Integer department_id;
+        public Integer classId;
+        public Integer deptId;
         public String type;
     }
     @Autowired
@@ -41,11 +41,12 @@ public class AdminLoginService {
             Admin admin = new Admin();
             admin.id = id;
             if(classInfo != null){
-                admin.class_id = classInfo.getId();
+                admin.classId = classInfo.getId();
+                admin.deptId = classInfo.getDeptId();
                 admin.type = "class";
             }
             if(department != null){
-                admin.department_id = department.getId();
+                admin.deptId = department.getId();
                 admin.type = "department";
             }
             return new Response<>(Response.SUCCESS, "登录成功", admin);
