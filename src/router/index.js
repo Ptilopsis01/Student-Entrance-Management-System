@@ -15,26 +15,41 @@ export default new VueRouter({
       path: '/',
       name: 'Welcome',
       component: Welcome,
+      meta: {
+        roles: ['guest', 'student', 'class', 'department', 'superuser']
+      }
     },
     {
       path: '/student',
       name: 'StudentDash',
       component: StudentDash,
+      meta: {
+        roles: ['student']
+      }
     },
     {
       path: '/admin/class',
       name: 'ClassAdminDash',
       component: ClassAdminDash,
+      meta: {
+        roles: ['class']
+      }
     },
     {
       path: '/admin/dept',
       name: 'DeptAdminDash',
       component: DeptAdminDash,
+      meta: {
+        roles: ['department']
+      }
     },
     {
       path: '/superuser',
       name: 'SuperUserDash',
       component: SuperUserDash,
+      meta: {
+        roles: ['superuser']
+      }
     }
    ]
 })
