@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-button type="primary" @click="addFormVisible = true">查看填报信息</el-button>
-    <el-dialog title="查看入校申请" :visible.sync="addFormVisible">
+    <el-dialog title="查看填报信息" :visible.sync="addFormVisible">
       <el-form :model="form" :rules="formRules" ref="formRef" label-width="80px">
         <el-form-item label="学生ID" prop="stuId">
           <el-input v-model="form.stuId"></el-input>

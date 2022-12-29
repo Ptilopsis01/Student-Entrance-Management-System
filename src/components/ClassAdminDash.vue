@@ -10,7 +10,8 @@
       <el-col :span="12"><class-leave-time></class-leave-time></el-col>
     </el-row>
     <el-row style="position: relative; top: 150px;">
-      <el-col :span="24"><class-health-report></class-health-report></el-col>
+      <el-col :span="12"><class-health-report></class-health-report></el-col>
+      <el-col :span="12"><class-student-leave-time></class-student-leave-time></el-col>
     </el-row>
   </div>
 </template>
@@ -21,9 +22,10 @@ import ClassLeaveReport from "./admin/ClassAdmin/ClassLeaveReport.vue";
 import ClassEnterNumber from "./admin/ClassAdmin/ClassEnterNumber.vue";
 import ClassLeaveTime from "./admin/ClassAdmin/ClassLeaveTime.vue";
 import ClassHealthReport from "./admin/ClassAdmin/ClassHealthReport.vue";
+import ClassStudentLeaveTime from "./admin/ClassAdmin/ClassStudentLeaveTime.vue";
 export default {
   name: "ClassAdminDash",
-  components: {ClassHealthReport, ClassLeaveTime, ClassLeaveReport, ClassEnterReport, ClassEnterNumber}
+  components: {ClassHealthReport, ClassLeaveTime, ClassLeaveReport, ClassEnterReport, ClassEnterNumber, ClassStudentLeaveTime}
 }
 </script>
 

@@ -10,7 +10,8 @@
       <el-col :span="12"><dept-leave-time></dept-leave-time></el-col>
     </el-row>
     <el-row style="position: relative; top: 150px;">
-      <el-col :span="24"><dept-health-report></dept-health-report></el-col>
+      <el-col :span="12"><dept-health-report></dept-health-report></el-col>
+      <el-col :span="12"><dept-student-leave-time></dept-student-leave-time></el-col>
     </el-row>
   </div>
 </template>
@@ -21,9 +22,10 @@ import DeptLeaveReport from "./admin/DeptAdmin/DeptLeaveReport.vue";
 import DeptEnterNumber from "./admin/DeptAdmin/DeptEnterNumber.vue";
 import DeptLeaveTime from "./admin/DeptAdmin/DeptLeaveTime.vue";
 import DeptHealthReport from "./admin/DeptAdmin/DeptHealthReport.vue";
+import DeptStudentLeaveTime from "./admin/DeptAdmin/DeptStudentLeaveTime.vue";
 export default {
   name: "DeptAdminDash",
-  components: {DeptHealthReport, DeptLeaveTime, DeptLeaveReport, DeptEnterReport, DeptEnterNumber}
+  components: {DeptHealthReport, DeptLeaveTime, DeptLeaveReport, DeptEnterReport, DeptEnterNumber, DeptStudentLeaveTime}
 
 }
 </script>
