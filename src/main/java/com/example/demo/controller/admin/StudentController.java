@@ -5,6 +5,7 @@ import com.example.demo.service.admin.StudentService;
 import com.example.demo.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,5 +30,13 @@ public class StudentController {
     @GetMapping("/not-leave/in-request/")
     public Response<List<Student>> getNotLeftStudentInRequest(){
         return studentService.getNotLeftStudentInRequest();
+    }
+    @GetMapping("/class/{id}")
+    public Response<List<Student>> getStudentByClassId(@PathVariable Integer id){
+        return studentService.getStudentByClassId(id);
+    }
+    @GetMapping("/dept/{id}")
+    public Response<List<Student>> getStudentByDeptId(@PathVariable Integer id){
+        return studentService.getStudentByDeptId(id);
     }
 }

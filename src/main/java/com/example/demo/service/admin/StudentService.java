@@ -4,6 +4,8 @@ import com.example.demo.manager.ClassManager;
 import com.example.demo.manager.DepartmentManager;
 import com.example.demo.manager.LogManager;
 import com.example.demo.manager.StudentManager;
+import com.example.demo.model.entity.Class;
+import com.example.demo.model.entity.Department;
 import com.example.demo.model.entity.Log;
 import com.example.demo.model.entity.Student;
 import com.example.demo.util.Response;
@@ -90,5 +92,25 @@ public class StudentService {
             }
         }
         return new Response<>(Response.SUCCESS, "成功", result);
+    }
+    public Response<List<Student>> getStudentByClassId(Integer classId){
+        Class classes = classManager.getClassById(classId);
+        if (classes == null){
+            return new Response<>(Response.FAIL, "班级不存在", null);
+        }
+        else {
+            List<Student> student = studentManager.getStudentByClassId(classId);
+            return new Response<>(Response.SUCCESS, "成功", student);
+        }
+    }
+    public Response<List<Student>> getStudentByDeptId(Integer deptId){
+        Department dept = departmentManager.getDepartmentById(deptId);
+        if (dept == null){
+            return new Response<>(Response.FAIL, "班级不存在", null);
+        }
+        else {
+            List<Student> student = studentManager.getStudentByDeptId(deptId);
+            return new Response<>(Response.SUCCESS, "成功", student);
+        }
     }
 }
