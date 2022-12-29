@@ -32,4 +32,7 @@ public class LeaveReportManager {
     public List<LeaveReport> findLeaveReportByStatus(Integer status){
         return leaveReportMapper.findLeaveReportByStatus(status);
     }
+    public List<LeaveReport> findAllLeaveReport(){
+        return leaveReportMapper.findAll();
+    }
 }

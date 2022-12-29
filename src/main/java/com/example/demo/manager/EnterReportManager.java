@@ -26,6 +26,9 @@ public class EnterReportManager {
     public void save(EnterReport enterReport){
         enterReportMapper.save(enterReport);
     }
+    public List<EnterReport> findALLEnterReport(){
+        return enterReportMapper.findAll();
+    }
     public EnterReport findEnterReportById(Integer id){
         return enterReportMapper.findEnterReportById(id);
     }

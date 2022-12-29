@@ -61,4 +61,12 @@ public class RequestController {
     public Response<List<Object>> countEnterRequestByDeptId(@PathVariable Integer id){
         return requestService.countEnterRequestsByDeptId(id);
     }
+    @GetMapping("/enter/all/")
+    public Response<List<EnterReport>> getAllEnterRequests(){
+        return requestService.getAllEnterRequests();
+    }
+    @GetMapping("/leave/all/")
+    public Response<List<LeaveReport>> getAllLeaveRequests(){
+        return requestService.getAllLeaveRequests();
+    }
 }

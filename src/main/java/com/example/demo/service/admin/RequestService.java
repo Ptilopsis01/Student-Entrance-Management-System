@@ -184,4 +184,22 @@ public class RequestService {
             return new Response<>(Response.SUCCESS, "成功", result);
         }
     }
+    public Response<List<EnterReport>> getAllEnterRequests(){
+        List<EnterReport> result = enterReportManager.findALLEnterReport();
+        if (result == null){
+            return new Response<>(Response.FAIL, "没有申请", null);
+        }
+        else {
+            return new Response<>(Response.SUCCESS, "成功", result);
+        }
+    }
+    public Response<List<LeaveReport>> getAllLeaveRequests(){
+        List<LeaveReport> result = leaveReportManager.findAllLeaveReport();
+        if (result == null){
+            return new Response<>(Response.FAIL, "没有申请", null);
+        }
+        else {
+            return new Response<>(Response.SUCCESS, "成功", result);
+        }
+    }
 }

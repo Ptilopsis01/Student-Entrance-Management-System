@@ -22,7 +22,7 @@ public class LeaveTimeController {
     public Response<Long> getLeaveTime(@PathVariable Integer id){
         return leaveTimeService.getLeaveTime(id);
     }//返回离校总时长（分钟）
-    @GetMapping("/all")
+    @GetMapping("/all/")
     public Response<List<Object>> getAllLeaveTime(){
         return leaveTimeService.getAllLeaveTime();
     }//返回所有学生离校时长（分钟）
