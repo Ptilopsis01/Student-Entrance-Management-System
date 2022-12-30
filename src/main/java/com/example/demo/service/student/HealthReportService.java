@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("HealthReportService")
@@ -25,15 +26,12 @@ public class HealthReportService {
             return new Response<>(Response.FAIL, "student不存在", null);
         }
         else {
-            List<HealthReport> result = healthReportManager.findHealthReportByStuId(studentId);
-            if (days > 0 && days < result.size()) {
-                result = result.subList(result.size() - days, result.size());
-            }
-            else if (days >= result.size()) {
-                result = result.subList(0, result.size());
-            }
-            else {
-                return new Response<>(Response.FAIL, "days参数错误", null);
+            Timestamp date = new Timestamp(System.currentTimeMillis());
+            List<HealthReport> result = new ArrayList<>();
+            for (HealthReport healthReport : healthReportManager.findHealthReportByStuId(studentId)) {
+                if (healthReport.getSubDate().getTime()/(24*60*60*1000) >= date.getTime()/(24*60*60*1000) - days) {
+                    result.add(healthReport);
+                }
             }
             return new Response<>(Response.SUCCESS, "成功", result);
         }
