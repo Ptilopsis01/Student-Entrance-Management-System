@@ -46,7 +46,7 @@ public class EnterReportManager {
     }
     public List<Object> countAllEnterReport(){
         List<Object> list = new ArrayList<>();
-        studentMapper.findAll().forEach(student -> {
+        studentMapper.findStudentsWithMostEnterReport().forEach(student -> {
             EnterReportCount object = new EnterReportCount();
             object.id = student.getId();
             object.name = student.getName();
@@ -57,23 +57,27 @@ public class EnterReportManager {
     }
     public List<Object> countEnterReportByClassId(Integer id){
         List<Object> list = new ArrayList<>();
-        studentMapper.findStudentsByClassId(id).forEach(student -> {
-            EnterReportCount object = new EnterReportCount();
-            object.id = student.getId();
-            object.name = student.getName();
-            object.count = enterReportMapper.countByStuId(student.getId());
-            list.add(object);
+        studentMapper.findStudentsWithMostEnterReport().forEach(student -> {
+            if (student.getClassId().equals(id)){
+                EnterReportCount object = new EnterReportCount();
+                object.id = student.getId();
+                object.name = student.getName();
+                object.count = enterReportMapper.countByStuId(student.getId());
+                list.add(object);
+            }
         });
         return list;
     }
     public List<Object> countEnterReportByDeptId(Integer id){
         List<Object> list = new ArrayList<>();
-        studentMapper.findStudentsByDeptId(id).forEach(student -> {
-            EnterReportCount object = new EnterReportCount();
-            object.id = student.getId();
-            object.name = student.getName();
-            object.count = enterReportMapper.countByStuId(student.getId());
-            list.add(object);
+        studentMapper.findStudentsWithMostEnterReport().forEach(student -> {
+            if (student.getDeptId().equals(id)){
+                EnterReportCount object = new EnterReportCount();
+                object.id = student.getId();
+                object.name = student.getName();
+                object.count = enterReportMapper.countByStuId(student.getId());
+                list.add(object);
+            }
         });
         return list;
     }

@@ -12,7 +12,7 @@ import com.example.demo.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +44,7 @@ public class StudentService {
     }
     public Long getStudentLeaveTime(Integer id){
         List<Log> log = logManager.getLogByStuId(id);
-        Date date = new Date(System.currentTimeMillis());
+        Timestamp date = new Timestamp(System.currentTimeMillis());
         if (log.size() == 0){
             return 0L;
         }
