@@ -2,9 +2,18 @@
   <div>
     <el-button type="primary" @click="addFormVisible = true">离校时间最长</el-button>
     <el-dialog title="离校时间最长的学生" :visible.sync="addFormVisible">
+      <el-row>
+        <el-col :span="12"><el-button type="primary" @click="getLeaveReportList('all')">获取所有</el-button></el-col>
+        <el-col :span="12">
+          <el-input v-model="number" placeholder="输入数量"></el-input>
+        </el-col>
+      </el-row>
+      <el-input v-model="classId" class="input-with-select" placeholder="搜索班级">
+        <el-button slot="append" @click.prevent="getLeaveReportList('class')">确定</el-button>
+      </el-input>
       <el-table
         ref="filterTable"
-        :data="leaveReportList"
+        :data="leaveReportList.slice(0, this.number)"
         style="width: 100%"
         border
         :default-sort = "{prop: 'leaveTime', order: 'descending'}">
@@ -40,29 +49,69 @@ export default {
   data () {
     return {
       addFormVisible: false,
-      leaveReportList: []
+      number: 0,
+      leaveReportList: [],
+      classId: '',
+      classList: [],
     }
   },
   mounted() {
-    this.getLeaveReportList();
+    this.getClassList();
   },
   methods:{
-    getLeaveReportList () {
+    async getClassList() {
       let jsonObj = JSON.parse(window.sessionStorage.user)
-      let url = "/admin/leave-time/dept/" + jsonObj.user.deptId
+      let url = "/admin/class/list/" + jsonObj.user.deptId
       this.$axios
         .get(url)
-        .then(response => {
-          if (response.data.code === 0) {
-            this.leaveReportList = response.data.data
+        .then(res => {
+          if (res.data.code === 0) {
+            this.classList = res.data.data
           }
           else {
-            this.$message.error(response.data.msg)
+            this.$message.error(res.data.msg)
           }
         })
         .catch(err => {
           this.$message.error(err)
         })
+    },
+    getLeaveReportList (type) {
+      let jsonObj = JSON.parse(window.sessionStorage.user)
+      let url = '';
+      switch (type) {
+        case 'all':
+          url = "/admin/leave-time/dept/" + jsonObj.user.deptId
+          break
+        case 'class':
+          url = "/admin/leave-time/class/" + this.classId
+          break
+      }
+      let judge = false;
+      for (let i = 0; i < this.classList.length; i++) {
+        if (this.classList[i].id === parseInt(this.classId)) {
+          judge = true;
+          break;
+        }
+      }
+      if (judge === false && type === 'class') {
+        this.$message.error("班级超出权限范围")
+      }
+      else {
+        this.$axios
+          .get(url)
+          .then(response => {
+            if (response.data.code === 0) {
+              this.leaveReportList = response.data.data
+            }
+            else {
+              this.$message.error(response.data.msg)
+            }
+          })
+          .catch(err => {
+            this.$message.error(err)
+          })
+      }
     }
   },
 }

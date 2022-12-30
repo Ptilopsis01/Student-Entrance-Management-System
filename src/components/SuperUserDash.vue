@@ -14,6 +14,11 @@
     <el-row style="position: relative; top: 150px;">
       <el-col :span="8"><super-user-enter-number></super-user-enter-number></el-col>
       <el-col :span="8"><super-user-left-student></super-user-left-student></el-col>
+      <el-col :span="8"><super-user-left-no-request></super-user-left-no-request></el-col>
+    </el-row>
+    <el-row style="position: relative; top: 200px;">
+      <el-col :span="8"><super-user-not-left-in-request></super-user-not-left-in-request></el-col>
+      <el-col :span="8"></el-col>
       <el-col :span="8"></el-col>
     </el-row>
   </div>
@@ -28,9 +33,13 @@ import SuperUserLeaveTime from "./superuser/SuperUserLeaveTime.vue";
 import SuperUserStudentLeaveTime from "./superuser/SuperUserStudentLeaveTime.vue";
 import SuperUserEnterNumber from "./superuser/SuperUserEnterNumber.vue";
 import SuperUserLeftStudent from "./superuser/SuperUserLeftStudent.vue";
+import SuperUserLeftNoRequest from "./superuser/SuperUserLeftNoRequest.vue";
+import SuperUserNotLeftInRequest from "./superuser/SuperUserNotLeftInRequest.vue";
 export default {
   name: "SuperUserDash",
   components: {
+    SuperUserNotLeftInRequest,
+    SuperUserLeftNoRequest,
     SuperUserLeftStudent,
     SuperUserEnterNumber,
     SuperUserStudentLeaveTime,

@@ -2,12 +2,14 @@
   <div>
     <el-button type="primary" @click="addFormVisible = true">入校申请最多</el-button>
     <el-dialog title="入校申请最多的学生" :visible.sync="addFormVisible">
+      <el-input v-model="number" placeholder="输入数量" class="input-with-select">
+        <el-button slot="append" @click.prevent="getEnterReportList()">确定</el-button>
+      </el-input>
       <el-table
         ref="filterTable"
         :data="enterReportList"
         style="width: 100%"
-        border
-        :default-sort = "{prop: 'count', order: 'descending'}">
+        border>
         <el-table-column
           label="序号"
           width="50"
@@ -40,11 +42,10 @@ export default {
   data () {
     return {
       addFormVisible: false,
-      enterReportList: []
+      number: 0,
+      enterReportList: [],
+      enterReportListAll: []
     }
-  },
-  mounted() {
-    this.getEnterReportList();
   },
   methods:{
     getEnterReportList () {
@@ -54,7 +55,8 @@ export default {
         .get(url)
         .then(response => {
           if (response.data.code === 0) {
-            this.enterReportList = response.data.data
+            this.enterReportListAll = response.data.data
+            this.enterReportList = this.enterReportListAll.slice(0, this.number)
           }
           else {
             this.$message.error(response.data.msg)

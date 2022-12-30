@@ -2,9 +2,12 @@
   <div>
     <el-button type="primary" @click="addFormVisible = true">离校时间最长</el-button>
     <el-dialog title="离校时间最长的学生" :visible.sync="addFormVisible">
+      <el-input v-model="number" placeholder="输入数量" class="input-with-select">
+        <el-button slot="append" @click.prevent="getLeaveReportList()">确定</el-button>
+      </el-input>
       <el-table
         ref="filterTable"
-        :data="leaveReportList"
+        :data="leaveReportList.slice(0, this.number)"
         style="width: 100%"
         border
         :default-sort = "{prop: 'leaveTime', order: 'descending'}">
@@ -40,11 +43,9 @@ export default {
   data () {
     return {
       addFormVisible: false,
+      number: 0,
       leaveReportList: []
     }
-  },
-  mounted() {
-    this.getLeaveReportList();
   },
   methods:{
     getLeaveReportList () {
