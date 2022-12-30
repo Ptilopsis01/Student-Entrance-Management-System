@@ -70,6 +70,35 @@
                 <el-button type="primary" @click.prevent="approve(scope.row, 0)">提交</el-button>
               </div>
             </el-dialog>
+            <el-button
+              type="text"
+              @click="getHealth(scope.row)">查看</el-button>
+            <el-dialog
+              title="过去7天健康报告"
+              :visible.sync="view">
+              <el-table
+                :data="healthReportList"
+                style="width: 100%"
+                border>
+                <el-table-column
+                  prop="stuId"
+                  label="学生ID"
+                  fixed="left">
+                </el-table-column>
+                <el-table-column
+                  prop="subDate"
+                  label="日期">
+                </el-table-column>
+                <el-table-column
+                  prop="health"
+                  label="健康状况">
+                </el-table-column>
+                <el-table-column
+                  prop="location"
+                  label="定位">
+                </el-table-column>
+              </el-table>
+            </el-dialog>
           </template>
         </el-table-column>
       </el-table>
@@ -83,8 +112,10 @@ export default {
   data () {
     return {
       visible: false,
+      view: false,
       addFormVisible: false,
       enterReportList: [],
+      healthReportList: [],
       refReason: ''
     }
   },
@@ -149,6 +180,30 @@ export default {
           })
         })
     },
+    getHealth (row) {
+      let params = new FormData();
+      params.append('stuId', row.stuId);
+      params.append('days', '7');
+      this.$axios
+        .post('/student/health-report/', params)
+        .then(res => {
+          if (res.data.code === 0) {
+            this.healthReportList = res.data.data
+            this.view = true
+          } else {
+            this.$message({
+              message: res.data.msg,
+              type: 'error'
+            })
+          }
+        })
+        .catch(err => {
+          this.$message({
+            message: err,
+            type: 'error'
+          })
+        })
+    }
   },
 }
 </script>
